@@ -1,0 +1,976 @@
+#:import utils kivy.utils
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+WindowManager:
+    Main_Page:
+    Add_class_section:
+    add_student:
+    Add_student_main:
+    Add_student_manually:
+    Add_student_by_txt:
+    Edit_student_info:
+    Take_attendance_1:
+    Take_attendance_1_1:
+    Take_attendance_2:
+    Edit_by_name:
+    Edit_by_roll_number:
+    Edit_by_admission:
+
+
+<Main_Page>:
+    name: 'menu'
+    background_normal: ''
+    font_name: 'ballo.ttf'
+    background_color: utils.get_color_from_hex('739CFF')
+    orientation: 'vertical'
+    Button:
+        text: 'Hi'
+        size_hint: 1, .2
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    second_add:
+
+<second_add@StackLayout>:
+    padding: ('45dp','20dp','20dp','20dp')
+    spacing: '20dp', '20dp'
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+        text: 'Take\n\nAttendance'
+        size_hint: None, None
+        size: 120, 150
+        on_release:
+            app.root.current = 'take_attendance'
+            app.root.transition.direction = 'left'
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        text: 'Add Class\n      & \nSection'
+        size_hint: None, None
+        size: 120, 150
+        on_release:
+            app.root.current = 'add_class'
+            app.root.transition.direction = 'left'
+
+
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        text: 'Add\n\nStudent'
+        size_hint: None, None
+        size: 120, 150
+        on_release:
+            app.root.current = 'add_student'
+            app.root.transition.direction = 'left'
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        text: 'Edit Student\n\nInfo'
+        size_hint: None, None
+        size: 120, 150
+        on_release:
+            app.root.current = 'edit_student_info'
+            app.root.transition.direction = 'right'
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        text: 'H5'
+        size_hint: None, None
+        size: 120, 150
+    Button:
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        text: 'H6'
+        size_hint: None, None
+        size: 120, 150
+
+
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+
+
+
+
+
+
+
+<Add_class_section>:
+    name: 'add_class'
+    orientation: 'vertical'
+    background_normal: ''
+    font_name: 'ballo.ttf'
+    background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text: 'ADD\nCLASS'
+        size_hint: 1, .2
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    add_student:
+
+<add_student>:
+    padding: ('20dp','50dp','50dp','20dp')
+    spacing: '20dp', '20dp'
+    Spinner:
+        id: spinner_classes
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        size_hint: None, None
+        size: 285,50
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: spinner_section
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: None, None
+        size: 285,50
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.classes_section(spinner_classes.text, spinner_section.text)
+    Button:
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = 'menu'
+            app.root.transition.direction = 'right'
+
+
+
+    Label:
+        text: root.status
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+
+    Label:
+        text: 'Note: Science stream refer to section A\n      Commerce stream refer to section B'
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+
+
+
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+<Add_student_main>:
+    name: 'add_student'
+    orientation: 'vertical'
+    background_normal: ''
+    font_name: 'ballo.ttf'
+    background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text: 'ADD\nSTUDENTS\nINFO'
+        size_hint: 1, .2
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    add_student_info:
+
+
+<add_student_info>:
+    padding: ('20dp','50dp','50dp','20dp')
+    spacing: '20dp', '20dp'
+
+
+    Spinner:
+        id: spinner_choice
+        text: 'Select'
+        values: ['Add By Txt ','Add Manually ']
+        size_hint: None, None
+        size: 285,50
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        
+        on_release:
+            app.root.current = root.decide(spinner_choice.text)
+            app.root.transition.direction = 'left'
+    Button:
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = 'menu'
+            app.root.transition.direction = 'right'
+
+
+
+
+<Add_student_by_txt>:
+    padding: 20
+    spacing: 20
+    name: 'h1'
+    Spinner:
+        id: spinner_classes_11
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        size_hint: 1, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: spinner_section_11
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: 1,.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text:"Chose File"
+
+        on_press: root.select_file()
+        size_hint: 1,.1
+
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.all_function(spinner_classes_11.text,  spinner_section_11.text)
+
+
+    Button:
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = 'add_student'
+            app.root.transition.direction = 'right'
+
+
+
+<Add_student_manually>:
+    name: 'add_student_manually'
+    font_name: 'ballo.ttf'
+    padding: 20
+    spacing: 20
+    Button:
+        text: 'ADD\nSTUDENT\nInfo'
+        size_hint: 1, .2
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Label:
+        text: 'Class'
+        font_size: 15
+        color: utils.get_color_from_hex('739CFF')
+        size_hint: .3,.05
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: (115/255, 156/255, 255/255)
+    Spinner:
+        id: spinner_classes_10
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        size_hint: .7,.05
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Label:
+        text: 'Section'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: (115/255, 156/255, 255/255)
+
+    Spinner:
+        id: spinner_section_10
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: .7,.05
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Label:
+        text: 'Name'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: (115/255, 156/255, 255/255)
+
+    TextInput:
+        id: name
+        text: ''
+        multiline: False
+        size_hint: .7,.05
+        
+    Label:
+        text: 'Roll Number'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    TextInput:
+        id: rn
+        text: ''
+        multiline: False
+        size_hint: .7,.05
+        
+    Label:
+        text: 'Phone Number'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    TextInput:
+        id: pn
+        text: ''
+        multiline: False
+        size_hint: .7,.05
+        
+    Label:
+        text: 'Address'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    TextInput:
+        id: add
+        text: ''
+        multiline: False
+        size_hint: .7,.05
+        
+    Label:
+        text: 'Admission\n\tNumber'
+        font_size: 15
+        size_hint: .3,.05
+        color: utils.get_color_from_hex('739CFF')
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    TextInput:
+        id: an
+        text: ''
+        multiline: False
+        size_hint: .7,.05
+
+    Button:
+        text: 'Submit'
+        size_hint: .5,.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.add_student_information(spinner_classes_10.text, spinner_section_10.text, rn.text, name.text, pn.text, add.text, an.text )
+    Button:
+        text: 'Back'
+        size_hint: .5,.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = 'add_student'
+            app.root.transition.direction = 'right'
+
+    Label:
+        text: root.statuss
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, .1
+
+    Label:
+        text: 'Note: Science stream refer to section A\n      Commerce stream refer to section B'
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, .1
+
+
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+
+<Take_attendance_1>:
+    name: 'take_attendance'
+    orientation: 'vertical'
+    background_normal: ''
+    font_name: 'ballo.ttf'
+    background_color: utils.get_color_from_hex('739CFF')
+    Button:
+        text: 'TAKE\nATTENDENCE'
+        size_hint: 1, .2
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Take_attendance_1_1:
+
+<Take_attendance_1_1>:
+    name: 'take_attendance_1_1_screen'
+    id: take_attendance_1_1_screen
+
+    padding: ('20dp','50dp','50dp','20dp')
+    spacing: '20dp', '20dp'
+    Spinner:
+        id: spinner_classes_12
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        size_hint: None, None
+        size: 285,50
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: spinner_section_12
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: None, None
+        size: 285,50
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.classes_section_12(spinner_classes_12.text, spinner_section_12.text)
+        on_release:
+            app.root.current = 'take_att'
+            app.root.transition.direction = 'left'
+
+    Button:
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = 'menu'
+            app.root.transition.direction = 'right'
+
+
+        
+
+#_______________________________________________________________________
+#_______________________________________________________________________
+#_______________________________________________________________________
+
+<Take_attendance_2>:
+    name: 'take_att'
+    id: take_attendance_1_1_screen
+    orientation: 'vertical'
+
+#_______________________________________________________________________
+#_______________________________________________________________________
+#_______________________________________________________________________
+
+<Edit_student_info>:
+    name: 'edit_student_info'
+    margin: '10dp'
+    padding: '10dp'
+    spacing: '20dp'
+    Button:
+        text: 'EDIT\nSTUDENT\nINFO\n'
+        size_hint: 1, 0.2
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: spinner_ch
+        text: 'Section'
+        values: ['Edit By Name','Edit By Roll Number','Edit By Admission Number']
+        size_hint: 1, 0.1
+
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_release:
+            app.root.current = root.get_choice(spinner_ch.text)
+            app.root.transition.direction = 'left'
+
+    Button:
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press:
+        on_release:
+            app.root.current = 'menu'
+            app.root.transition.direction = 'right'
+
+#_______________________________________________________________________
+# edit by name
+<Edit_by_name>:
+
+    name: 'edit_by_name'
+    margin: '8dp'
+    padding: '8dp'
+    spacing: '15dp'
+    Spinner:
+        id: classes
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        background_normal: ''
+        size_hint: 1, 0.1
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: section
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: 1, 0.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Label:
+        text: 'Refer By'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Name'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+    TextInput:
+        id: nam
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Edit To'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Roll Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: rn
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Phone Number'
+
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: pn
+        size_hint: None, None
+        size: 140, 40
+        input_filter: 'float'
+        multiline: False
+    Label:
+        text: 'Address'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: ad
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Admission Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: adm
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.edit_by_name_1(classes.text, section.text, nam.text, rn.text, pn.text, ad.text, adm.text)
+
+    Button:
+
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press:
+        on_release:
+            app.root.current = 'edit_student_info'
+            app.root.transition.direction = 'right'
+
+#_______________________________________________________________________
+# edit by rn
+<Edit_by_roll_number>:
+
+    name: 'Edit_by_roll_number'
+    margin: '8dp'
+    padding: '8dp'
+    spacing: '15dp'
+    Spinner:
+        id: classes_1
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        background_normal: ''
+        size_hint: 1, 0.1
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: section_1
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: 1, 0.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Label:
+        text: 'Refer By'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Roll Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: rn_1
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+
+    Label:
+        text: 'Edit To'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Name'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+    TextInput:
+        id: nam_1
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+
+    Label:
+        text: 'Phone Number'
+
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: pn_1
+        size_hint: None, None
+        size: 140, 40
+        input_filter: 'float'
+        multiline: False
+    Label:
+        text: 'Address'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: ad_1
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Admission Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: adm_1
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.edit_by_rn(classes_1.text, section_1.text, nam_1.text, rn_1.text, pn_1.text, ad_1.text, adm_1.text)
+
+    Button:
+
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press:
+        on_release:
+            app.root.current = 'edit_student_info'
+            app.root.transition.direction = 'right'
+#_______________________________________________________________________
+# edit by name
+<Edit_by_admission>:
+
+    name: 'edit_by_adm'
+    margin: '8dp'
+    padding: '8dp'
+    spacing: '15dp'
+    Spinner:
+        id: classes
+        text: 'Class'
+        values: ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6','Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12', ]
+        background_normal: ''
+        size_hint: 1, 0.1
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+
+    Spinner:
+        id: section
+        text: 'Section'
+        values: ['Section A','Section B','Section C']
+        size_hint: 1, 0.1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+    Label:
+        text: 'Refer By'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Admission Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: adm
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+
+    Label:
+        text: 'Edit To'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: 1, 0.1
+    Label:
+        text: 'Name'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+    TextInput:
+        id: nam
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Roll Number'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: rn
+        size_hint: None, None
+        input_filter: 'float'
+        size: 140, 40
+        multiline: False
+    Label:
+        text: 'Phone Number'
+
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: pn
+        size_hint: None, None
+        size: 140, 40
+        input_filter: 'float'
+        multiline: False
+    Label:
+        text: 'Address'
+        font_name: 'ballo.ttf'
+        background_normal: ''
+        background_color: utils.get_color_from_hex('739CFF')
+        color: 0,60/255,90/255,1
+        size_hint: None, None
+        size: 140, 40
+
+    TextInput:
+        id: ad
+        size_hint: None, None
+        size: 140, 40
+        multiline: False
+
+    Button:
+        text: 'Submit'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press: root.edit_by_adm(classes.text, section.text, nam.text, rn.text, pn.text, ad.text, adm.text)
+
+    Button:
+
+        text: 'Back'
+        size_hint: .4, .1
+        background_normal: ''
+        font_name: 'ballo.ttf'
+        background_color: utils.get_color_from_hex('739CFF')
+        on_press:
+        on_release:
+            app.root.current = 'edit_student_info'
+            app.root.transition.direction = 'right'
